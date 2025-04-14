@@ -14,12 +14,25 @@ public class Transition : MonoBehaviour
     // Update is called once per frame
      void Update()
     {
-        if(Input.GetKeyDown(KeyCode.N))
-        {
-            SceneManager.LoadScene("ahong");
-        }
-
-      
+       
+{
+    
+    if(Input.GetKeyDown(KeyCode.N))
+    {
         
+        SceneManager.LoadScene("ahong");
     }
+}
+     
+    }
+
+   void OnCollisionEnter2D(Collision2D other)
+{
+    
+    if(other.gameObject.tag == "Player")
+    {
+        
+        SceneManager.LoadScene("ahong");
+    }
+}
 }
