@@ -7,6 +7,11 @@ TagManager:
   - Spike
   - Ground
   - DeathLine
+  - Apple
+  - Saw
+  - banana
+  - Finish flag
+  - Finish flag2
   layers:
   - Default
   - TransparentFX
@@ -41,6 +46,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3302607285
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
