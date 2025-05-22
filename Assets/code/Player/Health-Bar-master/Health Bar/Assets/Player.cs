@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-
+	[SerializeField]GameObject deathmenu;
+	[SerializeField]GameObject pausebutton;
 	public int maxHealth = 5;
 	public int currentHealth;
 
@@ -27,7 +30,15 @@ public class Player : MonoBehaviour
 		if (other.gameObject.tag == "DeathLine")
 		{
 			TakeDamage(5);
-        }
+		}
+		if (currentHealth <= 0)
+		{
+			Time.timeScale = 0;
+			deathmenu.SetActive(true);
+			pausebutton.SetActive(false);
+		}
+		
+	
 	}
 	void TakeDamage(int damage)
 	{
