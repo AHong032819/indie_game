@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private AudioClip jumpSound;
+    
     public CharacterController2D controller;
 
     public Animator animator;
@@ -12,6 +14,16 @@ public class PlayerMovement : MonoBehaviour
 
     float horizontalMove = 0f;
     bool jump = false;
+    public Transform groundCheck;
+    public LayerMask groundLayer;
+    bool isGrounded;
+    private AudioSource audioSource;
+
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
 
     // Update is called once per frame
@@ -19,12 +31,17 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
-        animator.SetFloat("Speed",Mathf.Abs(horizontalMove));
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
             animator.SetBool("IsJumping", true);
+        }
+        isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(0.38f, 0.09f), CapsuleDirection2D.Horizontal, 0, groundLayer);
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            audioSource.PlayOneShot(jumpSound);
         }
     }
 
