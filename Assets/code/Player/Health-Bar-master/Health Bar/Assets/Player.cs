@@ -47,6 +47,11 @@ public class Player : MonoBehaviour
 			TakeDamage(3);
 			audioSource.PlayOneShot(hurtSound);
 		}
+		if (other.gameObject.tag == "Enemy")
+		{
+			TakeDamage(1);
+			audioSource.PlayOneShot(hurtSound);
+		}
 		if (currentHealth <= 0)
 		{
 			Time.timeScale = 0;
