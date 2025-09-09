@@ -12,6 +12,7 @@ TagManager:
   - banana
   - Finish flag
   - Finish flag2
+  - Enemy
   layers:
   - Default
   - TransparentFX
